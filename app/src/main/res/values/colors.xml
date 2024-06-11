@@ -1,5 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- Base application colors -->
+    <color name="colorPrimary">#3F51B5</color> <!-- Indigo -->
+    <color name="colorPrimaryDark">#303F9F</color> <!-- Dark Indigo -->
+    <color name="colorAccent">#FF4081</color> <!-- Pink -->
+    <color name="colorAccentDark">#E91E63</color> <!-- Darker Pink -->
+    <color name="colorBlueDark">#E91E63</color> <!-- Blue Dark -->
+
+    <!-- Text colors -->
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="textColorTertiary">#BDBDBD</color>
+
+    <!-- Standard colors -->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <!-- Common UI colors -->
+    <color name="colorRed">#F44336</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorBlue">#2196F3</color>
+    <color name="colorYellow">#FFEB3B</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorGray">#9E9E9E</color>
+
+    <!-- Reds -->
+    <color name="cherry">#D2042D</color>
+    <color name="ruby">#9B111E</color>
+    <color name="firebrick">#B22222</color>
+    <color name="carmine">#960018</color>
+    <color name="burgundy">#800020</color>
+
+    <!-- Pinks -->
+    <color name="magenta">#FF00FF</color>
+    <color name="rose">#FF007F</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="cerise">#DE3163</color>
+    <color name="blush">#DE5D83</color>
+
+    <!-- Oranges -->
+    <color name="coral">#FF7F50</color>
+    <color name="tangerine">#F28500</color>
+    <color name="apricot">#FBCEB1</color>
+    <color name="amber">#FFBF00</color>
+    <color name="peach">#FFE5B4</color>
+
+    <!-- Yellows -->
+    <color name="gold">#FFD700</color>
+    <color name="mustard">#FFDB58</color>
+    <color name="daffodil">#FFFF31</color>
+    <color name="lemon">#FFF700</color>
+    <color name="canary">#FFFF99</color>
+
+    <!-- Greens -->
+    <color name="emerald">#50C878</color>
+    <color name="jade">#00A86B</color>
+    <color name="lime">#BFFF00</color>
+    <color name="olive">#808000</color>
+    <color name="mint">#3EB489</color>
+
+    <!-- Blues -->
+    <color name="azure">#007FFF</color>
+    <color name="cobalt">#0047AB</color>
+    <color name="sapphire">#0F52BA</color>
+    <color name="navy">#000080</color>
+    <color name="indigo">#4B0082</color>
+
+    <!-- Purples -->
+    <color name="lavender">#E6E6FA</color>
+    <color name="plum">#8E4585</color>
+    <color name="violet">#7F00FF</color>
+    <color name="orchid">#DA70D6</color>
+    <color name="lilac">#EDCDED</color>
+
+    <!-- Browns -->
+    <color name="sienna">#882D17</color>
+    <color name="cinnamon">#D2691E</color>
+    <color name="umber">#635147</color>
+    <color name="beige">#F5F5DC</color>
+    <color name="tan">#D2B48C</color>
+
+    <!-- Grays -->
+    <color name="charcoal">#36454F</color>
+    <color name="slate">#708090</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="smoke">#738276</color>
+    <color name="gunmetal">#2A3439</color>
+
 </resources>
