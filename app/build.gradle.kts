@@ -40,4 +40,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // lombok library
+    implementation(libs.lombok)
+    annotationProcessor(libs.lombok)
+
+    // Room library
+    implementation(libs.room)
+    annotationProcessor(libs.rooma)
+    testImplementation(libs.roomt)
+
 }
