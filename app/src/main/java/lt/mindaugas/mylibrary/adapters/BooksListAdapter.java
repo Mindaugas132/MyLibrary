@@ -1,4 +1,4 @@
-package lt.mindaugas.adapters;
+package lt.mindaugas.mylibrary.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
-import lt.mindaugas.models.Book;
+import lt.mindaugas.mylibrary.models.Book;
 import lt.mindaugas.mylibrary.R;
-import lt.mindaugas.ui.BookClickListener;
+import lt.mindaugas.mylibrary.ui.BookClickListener;
 
 @AllArgsConstructor
 public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
@@ -33,10 +33,10 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull BooksViewHolder holder, int position) {
         holder.titleView.setText(booksList.get(position).getTitle());
+        holder.authorView.setText("By: ".concat(booksList.get(position).getAuthor()));
         holder.starsView.setText(
                 String.valueOf(booksList.get(position).getStars()).concat(" ★")
         );
-        holder.authorView.setText(booksList.get(position).getAuthor());
 
         holder.bookContainer.setOnClickListener(
                 view -> listener.onClick(booksList.get(holder.getAdapterPosition()))

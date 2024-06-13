@@ -1,7 +1,7 @@
-package lt.mindaugas.database;
+package lt.mindaugas.mylibrary.database;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
-import static lt.mindaugas.models.Book.PRODUCT_TABLE_NAME;
+import static lt.mindaugas.mylibrary.models.Book.PRODUCT_TABLE_NAME;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -10,7 +10,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import lt.mindaugas.models.Book;
+import lt.mindaugas.mylibrary.models.Book;
 
 @Dao
 public interface BookDAO {

@@ -1,6 +1,6 @@
-package lt.mindaugas.database;
+package lt.mindaugas.mylibrary.database;
 
-import static lt.mindaugas.database.MainDB.DATABASE_VERSION;
+import static lt.mindaugas.mylibrary.database.MainDB.DATABASE_VERSION;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import lt.mindaugas.models.Book;
+import lt.mindaugas.mylibrary.models.Book;
 
 @Database(entities = Book.class,
         version = DATABASE_VERSION,

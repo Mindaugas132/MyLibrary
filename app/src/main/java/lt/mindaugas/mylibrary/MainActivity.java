@@ -1,7 +1,12 @@
 package lt.mindaugas.mylibrary;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,10 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import lt.mindaugas.adapters.BooksListAdapter;
-import lt.mindaugas.database.MainDB;
-import lt.mindaugas.models.Book;
-import lt.mindaugas.ui.BookClickListener;
+import lt.mindaugas.mylibrary.activities.BookEditor;
+import lt.mindaugas.mylibrary.adapters.BooksListAdapter;
+import lt.mindaugas.mylibrary.database.MainDB;
+import lt.mindaugas.mylibrary.models.Book;
+import lt.mindaugas.mylibrary.ui.BookClickListener;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -36,6 +42,32 @@ public class MainActivity extends AppCompatActivity {
         books = database.bookDAO().getAll();
 
         updateRecycler(books);
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookEditor.class);
+                startActivityForResult(intent, 101);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                assert data != null;
+                Book newBook = (Book) data.getSerializableExtra("book");
+
+                database.bookDAO().insert(newBook);
+                books.clear();
+                books.addAll(database.bookDAO().getAll());
+                booksListAdapter.notifyDataSetChanged();
+                Toast.makeText(this, "NEW BOOK ADDED!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private final BookClickListener bookClickListener = new BookClickListener() {

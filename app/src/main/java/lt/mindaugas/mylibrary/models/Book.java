@@ -1,6 +1,6 @@
-package lt.mindaugas.models;
+package lt.mindaugas.mylibrary.models;
 
-import static lt.mindaugas.models.Book.PRODUCT_TABLE_NAME;
+import static lt.mindaugas.mylibrary.models.Book.PRODUCT_TABLE_NAME;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

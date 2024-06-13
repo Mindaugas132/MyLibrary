@@ -2,9 +2,80 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_editor"
+    android:verticalScrollbarPosition="right"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lt.mindaugas.activities.BookEditor">
+    tools:context=".activities.BookEditor"
+    android:theme="@style/AppTheme">
+
+    <EditText
+        android:id="@+id/title_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Book title"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/author_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Author"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/title_input"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <RatingBar
+        android:id="@+id/stars_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:numStars="5"
+        android:rating="3.0"
+        android:stepSize="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/author_input" />
+
+    <EditText
+        android:id="@+id/description_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Describe book here..."
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:maxLines="10"
+        app:layout_constraintTop_toBottomOf="@+id/stars_input"
+        tools:layout_editor_absoluteX="260dp" />
+
+    <Button
+        android:id="@+id/floatButtonMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Save book"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

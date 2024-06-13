@@ -13,11 +13,13 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name="lt.mindaugas.activities.BookDetails"
+            android:name=".activities.BookDetails"
             android:exported="false" />
         <activity
-            android:name="lt.mindaugas.activities.BookEditor"
-            android:exported="false" />
+            android:name=".activities.BookEditor"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:label="Book credentials" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
