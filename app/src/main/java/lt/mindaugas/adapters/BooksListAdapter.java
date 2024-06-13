@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lt.mindaugas.models.Book;
 import lt.mindaugas.mylibrary.R;
 import lt.mindaugas.ui.BookClickListener;
 
+@AllArgsConstructor
 public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
     Context context;
     List<Book> booksList;
@@ -50,7 +52,6 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
