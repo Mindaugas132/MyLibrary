@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     List<Book> books = new ArrayList<>();
     MainDB database;
     FloatingActionButton fabAdd;
+    SearchView searchViewMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewMain);
         fabAdd = findViewById(R.id.floatButtonMain);
+        searchViewMain = findViewById(R.id.searchViewMain);
         database = MainDB.getInstance(this);
         books = database.bookDAO().getAll();
 
@@ -48,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, BookEditor.class);
                 startActivityForResult(intent, 101);
+            }
+        });
+        searchViewMain.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String searchText) {
+                filter(searchText);
+                return true;
             }
         });
     }
@@ -89,5 +104,16 @@ public class MainActivity extends AppCompatActivity {
                 new BooksListAdapter(MainActivity.this, books, bookClickListener);
 
         recyclerView.setAdapter(booksListAdapter);
+    }
+
+    private void filter(String searchText) {
+        List<Book> filteredBooks = new ArrayList<>();
+
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredBooks.add(book);
+            }
+            booksListAdapter.filterList(filteredBooks);
+        }
     }
 }

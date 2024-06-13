@@ -71,6 +71,11 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
         int random = (int) (Math.random() * colorCodes.size());
         return colorCodes.get(random);
     }
+
+    public void filterList(List<Book> filteredBooks) {
+        booksList = filteredBooks;
+        notifyDataSetChanged();
+    }
 }
 
 class BooksViewHolder extends RecyclerView.ViewHolder {

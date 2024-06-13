@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_editor"
-    android:verticalScrollbarPosition="right"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.BookEditor"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    android:verticalScrollbarPosition="right"
+    tools:context=".activities.BookEditor">
 
     <EditText
         android:id="@+id/title_input"
@@ -60,8 +60,8 @@
         android:gravity="center"
         android:hint="Describe book here..."
         android:inputType="textMultiLine"
-        android:minLines="3"
         android:maxLines="10"
+        android:minLines="3"
         app:layout_constraintTop_toBottomOf="@+id/stars_input"
         tools:layout_editor_absoluteX="260dp" />
 
