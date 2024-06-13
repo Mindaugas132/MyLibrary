@@ -10,11 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
-import lt.mindaugas.mylibrary.models.Book;
 import lt.mindaugas.mylibrary.R;
+import lt.mindaugas.mylibrary.models.Book;
 import lt.mindaugas.mylibrary.ui.BookClickListener;
 
 @AllArgsConstructor
@@ -37,11 +38,12 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
         holder.starsView.setText(
                 String.valueOf(booksList.get(position).getStars()).concat(" ★")
         );
-
+        holder.bookContainer.setBackgroundColor(
+                holder.itemView.getResources().getColor(randomColor(), null)
+        );
         holder.bookContainer.setOnClickListener(
                 view -> listener.onClick(booksList.get(holder.getAdapterPosition()))
         );
-
         holder.bookContainer.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -57,6 +59,18 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
     public int getItemCount() {
         return booksList.size();
     }
+
+    private int randomColor() {
+        List<Integer> colorCodes = new ArrayList<>();
+        colorCodes.add(R.color.colorRed);
+        colorCodes.add(R.color.colorGreen);
+        colorCodes.add(R.color.colorBlue);
+        colorCodes.add(R.color.colorYellow);
+        colorCodes.add(R.color.colorOrange);
+
+        int random = (int) (Math.random() * colorCodes.size());
+        return colorCodes.get(random);
+    }
 }
 
 class BooksViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +79,6 @@ class BooksViewHolder extends RecyclerView.ViewHolder {
 
     public BooksViewHolder(@NonNull View itemView) {
         super(itemView);
-
         bookContainer = itemView.findViewById(R.id.productContainer);
         starsView = itemView.findViewById(R.id.starsView);
         titleView = itemView.findViewById(R.id.titleView);
