@@ -159,6 +159,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             startActivityForResult(intent, 102);
             return true;
         }
+        if (item.getItemId() == R.id.deleteBook && selectBook != null) {
+            database.bookDAO().delete(selectBook);
+            books.remove(selectBook);
+            booksListAdapter.notifyDataSetChanged();
+            Toast.makeText(
+                    MainActivity.this, "BOOK DELETED!", Toast.LENGTH_SHORT
+            ).show();
+            return true;
+        }
         return false;
     }
 }
