@@ -28,14 +28,14 @@ import lt.mindaugas.mylibrary.database.MainDB;
 import lt.mindaugas.mylibrary.models.Book;
 import lt.mindaugas.mylibrary.ui.BookClickListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     RecyclerView recyclerView;
     BooksListAdapter booksListAdapter;
     List<Book> books = new ArrayList<>();
     MainDB database;
     FloatingActionButton fabAdd;
     SearchView searchViewMain;
-    Book selectProduct;
+    Book selectedBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onLongClick(Book book, CardView cardView) {
-
+            selectedBook = book;
+            showPopup(cardView);
         }
     };
 
@@ -125,5 +126,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void showPopup(CardView cardView) {
+        PopupMenu popupMenu = new PopupMenu(this, cardView);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.popup_book_menu);
+        popupMenu.show();
+    }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return false;
+    }
 }

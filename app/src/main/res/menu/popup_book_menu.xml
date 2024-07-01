@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/editBook"
+        android:title="Edit book" />
+    <item
+        android:id="@+id/deleteBook"
+        android:title="Delete book from library" />
+</menu>
