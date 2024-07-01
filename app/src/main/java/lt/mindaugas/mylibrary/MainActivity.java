@@ -2,10 +2,12 @@ package lt.mindaugas.mylibrary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,12 +163,27 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             return true;
         }
         if (item.getItemId() == R.id.deleteBook && selectBook != null) {
-            database.bookDAO().delete(selectBook);
-            books.remove(selectBook);
-            booksListAdapter.notifyDataSetChanged();
-            Toast.makeText(
-                    MainActivity.this, "BOOK DELETED!", Toast.LENGTH_SHORT
-            ).show();
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    "Are you sure you want to delete this book?",
+                    Snackbar.LENGTH_LONG).setDuration(5000);
+
+            View snackbarView = snackbar.getView();
+            TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+            textView.setTextColor(Color.RED);
+            textView.setTextSize(20);
+            snackbar.setAction("CONFIRM", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    database.bookDAO().delete(selectBook);
+                    books.remove(selectBook);
+                    booksListAdapter.notifyDataSetChanged();
+                    Toast.makeText(
+                            MainActivity.this, "BOOK DELETED!", Toast.LENGTH_SHORT
+                    ).show();
+                }
+            }).setActionTextColor(Color.YELLOW);
+
+            snackbar.show();
             return true;
         }
         return false;
