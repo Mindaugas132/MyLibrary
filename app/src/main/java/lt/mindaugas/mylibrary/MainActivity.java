@@ -3,7 +3,9 @@ package lt.mindaugas.mylibrary;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import lt.mindaugas.mylibrary.activities.BookDetails;
 import lt.mindaugas.mylibrary.activities.BookEditor;
 import lt.mindaugas.mylibrary.adapters.BooksListAdapter;
 import lt.mindaugas.mylibrary.database.MainDB;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     MainDB database;
     FloatingActionButton fabAdd;
     SearchView searchViewMain;
+    Book selectProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +92,14 @@ public class MainActivity extends AppCompatActivity {
     private final BookClickListener bookClickListener = new BookClickListener() {
         @Override
         public void onClick(Book book) {
+            Intent intent = new Intent(MainActivity.this, BookDetails.class);
+            intent.putExtra("bookId", book.getId());
+            startActivity(intent);
         }
 
         @Override
         public void onLongClick(Book book, CardView cardView) {
+
         }
     };
 
@@ -116,4 +124,6 @@ public class MainActivity extends AppCompatActivity {
             booksListAdapter.filterList(filteredBooks);
         }
     }
+
+
 }

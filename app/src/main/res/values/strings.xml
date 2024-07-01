@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Personal Library</string>
     <string name="add_new_book">Add new Book</string>
+    <string name="book_image">Book image</string>
 </resources>
