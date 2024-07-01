@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     MainDB database;
     FloatingActionButton fabAdd;
     SearchView searchViewMain;
-    Book selectedBook;
+    Book selectBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,24 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 booksListAdapter.notifyDataSetChanged();
                 Toast.makeText(this, "NEW BOOK ADDED!", Toast.LENGTH_LONG).show();
             }
+        } else if (requestCode == 102) {
+            if (resultCode == Activity.RESULT_OK) {
+                assert data != null;
+                Book updatedBook = (Book) data.getSerializableExtra("book");
+
+                database.bookDAO().update(
+                        updatedBook.getId(),
+                        updatedBook.getTitle(),
+                        updatedBook.getAuthor(),
+                        updatedBook.getStars(),
+                        updatedBook.getDescription()
+                );
+                books.clear();
+                books.addAll(database.bookDAO().getAll());
+                booksListAdapter.notifyDataSetChanged();
+                Toast.makeText(this, "BOOK UPDATED!", Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 
@@ -99,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         @Override
         public void onLongClick(Book book, CardView cardView) {
-            selectedBook = book;
+            selectBook = book;
             showPopup(cardView);
         }
     };
@@ -135,6 +153,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.editBook && selectBook != null) {
+            Intent intent = new Intent(MainActivity.this, BookEditor.class);
+            intent.putExtra("selectedBook", selectBook);
+            startActivityForResult(intent, 102);
+            return true;
+        }
         return false;
     }
 }

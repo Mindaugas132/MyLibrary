@@ -21,19 +21,32 @@ public class BookEditor extends AppCompatActivity {
     RatingBar inputStars;
     EditText inputDescription;
     Button addButton;
-    Book book = new Book();
+    Book book;
+    boolean isOldBook = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_editor);
 
+        book = new Book();
         inputTitle = findViewById(R.id.title_input);
         inputAuthor = findViewById(R.id.author_input);
         inputStars = findViewById(R.id.stars_input);
         inputDescription = findViewById(R.id.description_input);
         addButton = findViewById(R.id.floatButtonMain);
         addButton.setTextColor(Color.WHITE);
+
+        try {
+            book = (Book) getIntent().getSerializableExtra("selectedBook");
+            inputTitle.setText(book.getTitle());
+            inputAuthor.setText(book.getAuthor());
+            inputStars.setRating(book.getStars());
+            inputDescription.setText(book.getDescription());
+            isOldBook = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +62,10 @@ public class BookEditor extends AppCompatActivity {
                             "Please fill in all fields",
                             Toast.LENGTH_SHORT).show();
                     return;
+                }
+
+                if (!isOldBook) {
+                    book = new Book();
                 }
 
                 book.setTitle(title);
