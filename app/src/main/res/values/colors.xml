@@ -88,4 +88,11 @@
     <color name="smoke">#738276</color>
     <color name="gunmetal">#2A3439</color>
 
+    <!-- Stars -->
+    <color name="star_1">#FF5145</color>
+    <color name="star_2">#FF9676</color>
+    <color name="star_3">#FFEB3B</color>
+    <color name="star_4">#90F1B0</color>
+    <color name="star_5">#4CAF50</color>
+
 </resources>

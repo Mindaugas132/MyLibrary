@@ -39,7 +39,8 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
                 String.valueOf(booksList.get(position).getStars()).concat(" ★")
         );
         holder.bookContainer.setBackgroundColor(
-                holder.itemView.getResources().getColor(randomColor(), null)
+                holder.itemView.getResources().getColor(colorByStars(
+                        booksList.get(position).getStars()), null)
         );
         holder.bookContainer.setOnClickListener(
                 view -> listener.onClick(booksList.get(holder.getAdapterPosition()))
@@ -70,6 +71,23 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksViewHolder> {
 
         int random = (int) (Math.random() * colorCodes.size());
         return colorCodes.get(random);
+    }
+
+    private int colorByStars(int star) {
+        switch (star) {
+            case 1:
+                return R.color.star_1;
+            case 2:
+                return R.color.star_2;
+            case 3:
+                return R.color.star_3;
+            case 4:
+                return R.color.star_4;
+            case 5:
+                return R.color.star_5;
+            default:
+                return R.color.colorGray;
+        }
     }
 
     public void filterList(List<Book> filteredBooks) {
