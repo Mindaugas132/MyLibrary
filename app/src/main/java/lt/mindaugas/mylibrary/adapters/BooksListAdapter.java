@@ -102,7 +102,7 @@ class BooksViewHolder extends RecyclerView.ViewHolder {
 
     public BooksViewHolder(@NonNull View itemView) {
         super(itemView);
-        bookContainer = itemView.findViewById(R.id.productContainer);
+        bookContainer = itemView.findViewById(R.id.bookContainer);
         starsView = itemView.findViewById(R.id.starsView);
         titleView = itemView.findViewById(R.id.titleView);
         authorView = itemView.findViewById(R.id.authorView);
